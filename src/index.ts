@@ -1,8 +1,8 @@
-import express, { Express, Request, Response } from 'express'
+import express, { Express } from 'express'
 import { ImapFlow } from 'imapflow'
 import dotenv from 'dotenv'
 import connectDB from './config/database'
-import Account from './models/account.model'
+import clientRoutes from './routes/client/index.route'
 
 const app: Express = express()
 dotenv.config()
@@ -24,17 +24,7 @@ const client = new ImapFlow({
 app.set('views', './src/views')
 app.set('view engine', 'pug')
 
-app.get('/accounts', async (req: Request, res: Response) => {
-  const accounts = await Account.find({
-    deleted: false,
-    status: 'active'
-  })
-  console.log(accounts)
-  res.render('client/pages/homepage.pug', {
-    pageTitle: 'Trang chủ',
-    accounts: accounts
-  })
-})
+clientRoutes(app)
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)
