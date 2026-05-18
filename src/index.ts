@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from 'express'
 import { ImapFlow } from 'imapflow'
 import dotenv from 'dotenv'
 import connectDB from './config/database'
+import Account from './models/account.model'
 
 const app: Express = express()
 dotenv.config()
@@ -20,18 +21,19 @@ const client = new ImapFlow({
   logger: false // Disable logging. Omit to use the default Pino logger.
 })
 
-app.get('/', (req: Request, res: Response) => {
-  //   console.log('Connecting to IMAP server...')
-  //   client.connect().then(() => {
-  //     console.log('Connected to IMAP server')
-  res.render('client/pages/homepage.pug')
-})
-
 app.set('views', './src/views')
 app.set('view engine', 'pug')
 
-app.get('/tours', (req: Request, res: Response) => {
-  res.render('client/pages/tours/index.pug')
+app.get('/accounts', async (req: Request, res: Response) => {
+  const accounts = await Account.find({
+    deleted: false,
+    status: 'active'
+  })
+  console.log(accounts)
+  res.render('client/pages/homepage.pug', {
+    pageTitle: 'Trang chủ',
+    accounts: accounts
+  })
 })
 
 app.listen(port, () => {
