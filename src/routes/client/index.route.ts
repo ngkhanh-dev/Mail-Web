@@ -2,7 +2,7 @@ import { Express } from 'express'
 import { accountRoutes } from './account.route'
 
 const clientRoutes = (app: Express) => {
-  app.use('/', accountRoutes)
+  app.use('/accounts', accountRoutes)
 }
 
 export default clientRoutes

@@ -1,17 +1,8 @@
-import { Request, Response, Router } from 'express'
-import Account from '../../models/account.model'
+import { Router } from 'express'
 const router: Router = Router()
 
-router.get('/accounts', async (req: Request, res: Response) => {
-  const accounts = await Account.find({
-    deleted: false,
-    status: 'active'
-  })
-  //   console.log(accounts)
-  res.render('client/pages/homepage.pug', {
-    pageTitle: 'Trang chủ',
-    accounts: accounts
-  })
-})
+import * as controller from '../../controllers/account.controller'
+
+router.get('/', controller.index)
 
 export const accountRoutes: Router = router
