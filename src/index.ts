@@ -1,7 +1,13 @@
 import express, { Express, Request, Response } from 'express'
 import { ImapFlow } from 'imapflow'
+import dotenv from 'dotenv'
+import connectDB from './config/database'
+
 const app: Express = express()
-const port: number = 3000
+dotenv.config()
+const port: string = `${process.env.PORT}`
+// Kết nối database
+connectDB()
 
 const client = new ImapFlow({
   host: 'imap.example.com',
