@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
-import Account from '../models/account.model'
+import Account from '../../models/account.model'
 
+// [GET] /accounts
 export const index = async (req: Request, res: Response) => {
   const accounts = await Account.find({
     deleted: false,
