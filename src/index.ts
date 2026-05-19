@@ -24,6 +24,8 @@ const client = new ImapFlow({
 app.set('views', './src/views')
 app.set('view engine', 'pug')
 
+app.use(express.static('./src/public'))
+
 clientRoutes(app)
 
 app.listen(port, () => {
