@@ -5,7 +5,7 @@ block content
     .mail-detail-card
 
         .mail-detail-header
-            h2 #{mail.subject}
+            h2 #{mails.subject}
 
             .mail-detail-actions
                 button.btn.btn-outline-primary Reply
@@ -14,17 +14,17 @@ block content
         .mail-meta
             p
                 b From:
-                |  #{mail.sender}
+                |  #{mails.email}
 
             p
                 b To:
                 |  Nguoi_nhan
 
-            p
-                b Time:
-                |  #{mail.createdAt}
+            //- p
+            //-     b Time:
+            //-     |  #{mail.createdAt}
 
         hr
 
         .mail-content
-            | #{mail.content}
+            | #{mails.content}

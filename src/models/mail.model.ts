@@ -7,6 +7,7 @@ const mailSchema = new mongoose.Schema(
     //   createdBy: String,
     createdAt: { type: Date, default: Date.now, expires: 60 },
     type: { type: String, default: 'netflix' },
+    content: { type: String },
     deadline: { type: Date },
     price: { type: Number },
     status: { type: String, enum: ['active', 'inactive'], default: 'active' },

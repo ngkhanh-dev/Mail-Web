@@ -2,7 +2,7 @@ import express, { Express } from 'express'
 import { ImapFlow } from 'imapflow'
 import dotenv from 'dotenv'
 import connectDB from './config/database'
-import clientRoutes from './routes/admin/index.route'
+import adminRoutes from './routes/admin/index.route'
 import bodyParser from 'body-parser'
 import flash from 'express-flash'
 import session from 'express-session'
@@ -40,7 +40,8 @@ app.use(express.static(`${__dirname}/public`))
 //Nhúng Body-parser
 app.use(bodyParser.urlencoded({ extended: false }))
 
-clientRoutes(app)
+// Đăng ký các routes
+adminRoutes(app)
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)
