@@ -5,7 +5,7 @@ const mailSchema = new mongoose.Schema(
     info: { type: String, required: true },
     email: { type: String, required: true },
     //   createdBy: String,
-    createdAt: { type: Date, default: Date.now, expires: 3600 },
+    createdAt: { type: Date, default: Date.now, expires: 60 },
     type: { type: String, default: 'netflix' },
     deadline: { type: Date },
     price: { type: Number },

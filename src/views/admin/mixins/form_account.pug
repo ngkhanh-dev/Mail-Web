@@ -1,0 +1,64 @@
+mixin accountForm(action, method, item)
+
+    form(
+        action=action
+        method="POST"
+        class="card p-4 shadow-sm"
+    )
+
+        .mb-3
+            label.form-label Email
+
+            input.form-control(
+                type="string"
+                name="email"
+                required
+                value=item ? item.email : ""
+            )
+        
+        .mb-3
+            label.form-label Info
+
+            input.form-control(
+                type="text"
+                name="info"
+                required
+                value=item ? item.info : ""
+            )
+
+        .mb-3
+            label.form-label Type 
+
+            input.form-control(
+                type="text"
+                name="type"
+                required
+                value=item ? item.type : ""
+            )
+
+        .mb-3
+            label.form-label Price
+
+            input.form-control(
+                type="text"
+                name="price"
+                required
+                value=item ? item.price : ""
+            )
+
+        .mb-3
+            label.form-label Status
+
+            select.form-select(name="status")
+                option(
+                    value="active"
+                    selected=item && item.status === "active"
+                ) Active
+
+                option(
+                    value="inactive"
+                    selected=item && item.status === "inactive"
+                ) Inactive
+
+        button.btn.btn-primary(type="submit")
+            | Submit

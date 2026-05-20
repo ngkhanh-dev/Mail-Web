@@ -1,0 +1,36 @@
+aside.sidebar
+
+    .logo
+        i.fa-solid.fa-envelope
+        span Mailbox
+
+    a.compose-btn(href="/mailbox/create")
+        i.fa-solid.fa-pen
+        | Compose
+
+    ul.sidebar-menu
+
+        li
+            a.active(href="/mailbox")
+                i.fa-solid.fa-inbox
+                span Inbox
+
+        li
+            a(href="/mailbox/sent")
+                i.fa-solid.fa-paper-plane
+                span Sent
+
+        li
+            a(href="/mailbox/draft")
+                i.fa-solid.fa-file
+                span Draft
+
+        li
+            a(href="/mailbox/trash")
+                i.fa-solid.fa-trash
+                span Trash
+
+        li
+            a(href="/accounts")
+                i.fa-solid.fa-users
+                span Accounts

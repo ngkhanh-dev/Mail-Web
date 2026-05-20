@@ -1,0 +1,53 @@
+extends ../../layouts/main
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h1 Account List
+
+        a.btn.btn-success(href="/accounts/create")
+            | Create Account
+
+    table.table.table-bordered.table-hover.bg-white
+        thead.table-dark
+            tr
+                th #
+                th Email
+                th Status
+                th Created At
+                th Action
+
+        tbody
+            each item, index in accounts
+                tr
+                    td #{index + 1}
+
+                    td #{item.email}
+
+                    td
+                        if item.status === 'active'
+                            span.badge.bg-success Active
+                        else
+                            span.badge.bg-danger Inactive
+
+                    td #{item.createdAt}
+
+                    td
+                        a.btn.btn-sm.btn-info.me-2(
+                            href=`/accounts/${item._id}`
+                        ) Detail
+
+                        a.btn.btn-sm.btn-warning.me-2(
+                            href=`/accounts/edit/${item._id}`
+                        ) Edit
+
+                        form(
+                            action=`/accounts/delete/${item._id}`
+                            method="POST"
+                            style="display:inline;"
+                        )
+                            button.btn.btn-sm.btn-danger(
+                                type="submit"
+                                onclick="return confirm('Delete account?')"
+                            )
+                                | Delete

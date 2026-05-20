@@ -1,0 +1,9 @@
+extends ../../layouts/main
+
+include ../../mixins/form_account
+
+block content
+
+    h1.mb-4 Create Account
+
+    +accountForm("/accounts/create", "POST", null)

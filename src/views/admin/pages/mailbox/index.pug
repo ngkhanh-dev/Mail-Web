@@ -1,0 +1,37 @@
+extends ../../layouts/main
+
+block content
+
+    .mail-header
+        h2 Inbox
+
+        .mail-actions
+            button.btn.btn-primary Refresh
+            button.btn.btn-danger Delete
+
+    .mail-table-wrapper
+
+        table.mail-table
+
+            tbody
+
+                each item in mails
+
+                    tr
+                        td.checkbox-col
+                            input(type="checkbox")
+
+                        td.star-col
+                            i.fa-regular.fa-star
+
+                        td.sender-col
+                            | #{item.sender}
+
+                        td.subject-col
+                            a(
+                                href=`/mailbox/${item._id}`
+                            )
+                                | #{item.subject}
+
+                        td.time-col
+                            | #{item.createdAt}

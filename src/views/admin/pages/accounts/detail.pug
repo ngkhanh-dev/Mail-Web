@@ -1,0 +1,25 @@
+extends ../../layouts/main
+
+block content
+
+    .card.shadow-sm
+        .card-body
+
+            h3.mb-4 Account Detail
+
+            p
+                b Email:
+                |  #{account.email}
+
+            p
+                b Status:
+                |  #{account.status}
+
+            p
+                b Created At:
+                |  #{account.createdAt}
+
+            a.btn.btn-warning(
+                href=`/accounts/edit/${account._id}`
+            )
+                | Edit
